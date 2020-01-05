@@ -1,0 +1,60 @@
+############ Variables ############
+@domain = http://localhost:5000
+
+############ Authorization ############
+### Signup USER account ###
+POST {{domain}}/api/users
+Content-Type: application/json
+{
+    "firstname": "Edmark",
+    "lastname": "Magsalin",
+    "email": "edmarkmagsalin@gmail.com",
+    "password": "12345678"
+}
+
+### Login USER account ###
+POST {{domain}}/api/auth
+Content-Type: application/json
+{
+    "email": "edmarkmagsalin@gmail.com",
+    "password": "12345678"
+}
+
+### Get USER account ###
+GET {{domain}}/api/auth
+Content-Type: application/json
+x-auth-token: 
+
+### Delete USER account ###
+DELETE {{domain}}/api/users/[id]
+Content-Type: application/json
+x-auth-token: 
+
+############ CRUD ############
+### Create USER's ITEM ###
+POST {{domain}}/api/items
+Content-Type: application/json
+x-auth-token: 
+{
+    "name": "",
+    "date": ""
+}
+
+### Read USER's ITEM/s ###
+GET {{domain}}/api/items
+Content-Type: application/json
+x-auth-token: 
+
+### Update USER's ITEM ###
+PUT {{domain}}/api/items/[id]
+Content-Type: application/json
+x-auth-token: 
+{
+    "name": "",
+    "date": ""
+}
+
+### Delete USER's ITEM ###
+DELETE {{domain}}/api/items/[id]
+Content-Type: application/json
+x-auth-token: 
