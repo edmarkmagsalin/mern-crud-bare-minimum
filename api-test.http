@@ -1,60 +1,63 @@
 ############ Variables ############
-@domain = http://localhost:5000
+@BASEURL = http://localhost:5000
 
 ############ Authorization ############
 ### Signup USER account ###
-POST {{domain}}/api/users
+
+POST {{BASEURL}}/api/users
 Content-Type: application/json
+
 {
-    "firstname": "Edmark",
-    "lastname": "Magsalin",
-    "email": "edmarkmagsalin@gmail.com",
-    "password": "12345678"
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "johndoe@gmail.com",
+    "password": "1234567890"
 }
 
 ### Login USER account ###
-POST {{domain}}/api/auth
+POST {{BASEURL}}/api/auth
 Content-Type: application/json
+
 {
-    "email": "edmarkmagsalin@gmail.com",
-    "password": "12345678"
+    "email": "johndoe@gmail.com",
+    "password": "1234567890"
 }
 
 ### Get USER account ###
-GET {{domain}}/api/auth
+GET {{BASEURL}}/api/auth
 Content-Type: application/json
-x-auth-token: 
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWUxNzAzOGQzMzE1ZTYzMzdjZWNmMGE5In0sImlhdCI6MTU3ODU2NjU2NSwiZXhwIjoxNTc4OTI2NTY1fQ.NYfww_RBvng9So4VWBvlbsvUhePf20NWLl1_s52aB4Y
 
 ### Delete USER account ###
-DELETE {{domain}}/api/users/[id]
+DELETE {{BASEURL}}/api/users/5e16f91d3315e6337cecf0a3
 Content-Type: application/json
-x-auth-token: 
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWUxNmY5MWQzMzE1ZTYzMzdjZWNmMGEzIn0sImlhdCI6MTU3ODU2NDAxNiwiZXhwIjoxNTc4OTI0MDE2fQ.wcVhPfStf9NeTinPp7H_YfLqygNbRupztwCxGKKW-wA
 
 ############ CRUD ############
 ### Create USER's ITEM ###
-POST {{domain}}/api/items
+POST {{BASEURL}}/api/items
 Content-Type: application/json
-x-auth-token: 
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWUxNzAzOGQzMzE1ZTYzMzdjZWNmMGE5In0sImlhdCI6MTU3ODU4MjU3NSwiZXhwIjoxNTc4OTQyNTc1fQ.hZoaHgykhlVYWJlIA3vHiG4SdCDOw3bAzeCL6bra1co
+
 {
-    "name": "",
-    "date": ""
+    "name": "itlog"
 }
 
 ### Read USER's ITEM/s ###
-GET {{domain}}/api/items
+GET {{BASEURL}}/api/items
 Content-Type: application/json
-x-auth-token: 
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWUxNzAzOGQzMzE1ZTYzMzdjZWNmMGE5In0sImlhdCI6MTU3ODU4MjU3NSwiZXhwIjoxNTc4OTQyNTc1fQ.hZoaHgykhlVYWJlIA3vHiG4SdCDOw3bAzeCL6bra1co
 
 ### Update USER's ITEM ###
-PUT {{domain}}/api/items/[id]
+PUT {{BASEURL}}/api/items/5e16faad3315e6337cecf0a6
 Content-Type: application/json
-x-auth-token: 
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWUxNmZhNzQzMzE1ZTYzMzdjZWNmMGE0In0sImlhdCI6MTU3ODU2NDIxMiwiZXhwIjoxNTc4OTI0MjEyfQ.rVjrx2AW8jx7QjrH1uhF6aRfDJM3WIWb48tOD8dxmdA
+
 {
-    "name": "",
-    "date": ""
+    "name": ""
 }
 
 ### Delete USER's ITEM ###
-DELETE {{domain}}/api/items/[id]
+DELETE {{BASEURL}}/api/items/5e16faad3315e6337cecf0a6
 Content-Type: application/json
-x-auth-token: 
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWUxNmZhNzQzMzE1ZTYzMzdjZWNmMGE0In0sImlhdCI6MTU3ODU2NDU4OCwiZXhwIjoxNTc4OTI0NTg4fQ.3jGaPMBVDCjZoesL9S3lFD9DlC0b8l1UftrAebnUvwg

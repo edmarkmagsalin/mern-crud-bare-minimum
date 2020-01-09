@@ -1,10 +1,21 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext } from 'react'
 import { Link } from 'react-router-dom'
+import AuthContext from '../../context/auth/authContext'
 
 const Navbar = () => {
+
+    const authContext = useContext(AuthContext)
+
+    const { user, isAuthenticated, logout } = authContext;
+
+    const onLogout = () => {
+        logout()
+    }
+
     const authLink = (
         <Fragment>
             <li><Link to='/profile'>Profile</Link></li>
+            <li>Hi {user && user.firstname + '!'} | <a onClick={onLogout} href="#!">Logout</a></li>
         </Fragment>
     )
     const guestLink = (
@@ -17,8 +28,8 @@ const Navbar = () => {
         <Fragment>
             <ul>
                 <li><Link to='/'>Home</Link></li>
-                {guestLink}
-                {authLink}
+
+                {isAuthenticated ? authLink : guestLink}
             </ul>
         </Fragment>
     )

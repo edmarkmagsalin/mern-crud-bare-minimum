@@ -1,10 +1,23 @@
-import React from 'react'
+import React, { Fragment, useContext, useEffect } from 'react'
+import AuthContext from '../../context/auth/authContext'
 
 const Profile = () => {
+
+    const authContext = useContext(AuthContext)
+
+    useEffect(() => {
+        authContext.loadUser()
+        // eslint-disable-next-line
+    }, [])
+
+    const { user, isAuthenticated } = authContext;
     return (
-        <div>
+        <Fragment>
             <h1>Profile</h1>
-        </div>
+            First name: {user && user.firstname} <br />
+            Last name: {user && user.lastname} <br />
+            Email address: {user && user.email} <br />
+        </Fragment>
     )
 }
 
