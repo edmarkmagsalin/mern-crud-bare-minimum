@@ -21,3 +21,8 @@ export const CLEAR_ITEMS = 'CLEAR_ITEMS'
 export const CLEAR_ERRORS = 'CLEAR_ERRORS'
 export const ITEM_ERROR = 'ITEM_ERROR'
 export const LOGOUT = 'LOGOUT'
+
+// TO DELETE
+
+export const CLEAR_CURRENT = 'CLEAR_CURRENT'
+export const SET_CURRENT = 'SET_CURRENT'

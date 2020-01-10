@@ -10,7 +10,7 @@ const Profile = () => {
         // eslint-disable-next-line
     }, [])
 
-    const { user, isAuthenticated } = authContext;
+    const { user } = authContext;
     return (
         <Fragment>
             <h1>Profile</h1>

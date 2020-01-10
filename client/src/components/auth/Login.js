@@ -44,9 +44,13 @@ const Login = props => {
         <Fragment>
             <h1>Login</h1>
             <form onSubmit={onSubmit}>
-                <label htmlFor="email">Email Address</label> <input type="email" name="email" value={email} onChange={onChange} required /><br />
+                <div>
+                    <label htmlFor="email">Email Address</label> <input type="email" name="email" value={email} onChange={onChange} required />
+                </div>
             
-                <label htmlFor="password">Password</label> <input type="password" name="password" value={password} onChange={onChange} required minLength="6" /><br /><br />
+                <div>
+                    <label htmlFor="password">Password</label> <input type="password" name="password" value={password} onChange={onChange} required minLength="6" />
+                </div>
                 <input type="submit" value="Log in" />
             </form>
         </Fragment>

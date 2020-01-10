@@ -22,7 +22,7 @@ router.get('/', auth, async (req, res)=>{
 });
 
 // @route  POST api/items
-// @desc   Add new item
+// @desc   Create item
 // @access Private
 router.post('/',
 [

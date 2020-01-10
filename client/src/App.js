@@ -10,9 +10,11 @@ import Home from './components/page/Home'
 import Profile from './components/page/Profile'
 import Signup from './components/auth/Signup'
 import Login from './components/auth/Login'
+import Items from './components/items/Items'
 
 // States
 import AuthState from './context/auth/AuthState'
+import ItemState from './context/item/ItemState'
 
 // Utilities
 import setAuthToken from './utils/setAuthToken'
@@ -24,6 +26,7 @@ if (localStorage.token) {
 const App = () => {
   return (
     <AuthState>
+      <ItemState>
         <Router>
           <Navbar />
           <hr />
@@ -32,8 +35,13 @@ const App = () => {
             <Route exact path='/login' component={Login} />
             <Route exact path='/signup' component={Signup} />
             <PrivateRoute exact path='/profile' component={Profile} />
+            <PrivateRoute exact path='/items' component={Items} />
+            <Route>
+              404
+            </Route>
           </Switch>
         </Router>
+      </ItemState>
     </AuthState>
   )
 }

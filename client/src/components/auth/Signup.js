@@ -49,14 +49,26 @@ const Signup = props => {
         <Fragment>
             <h1>Signup</h1>
             <form onSubmit={onSubmit}>
-                <label htmlFor="firstname">First Name</label> <input type="text" name="firstname" value={firstname} onChange={onChange} required /><br />
-                <label htmlFor="lastname">Last Name</label> <input type="text" name="lastname" value={lastname} onChange={onChange} required /><br />
+                <div>
+                    <label htmlFor="firstname">First Name</label> <input type="text" name="firstname" value={firstname} onChange={onChange} required />
+                </div>
+
+                <div>
+                    <label htmlFor="lastname">Last Name</label> <input type="text" name="lastname" value={lastname} onChange={onChange} required />
+                </div>
             
-                <label htmlFor="email">Email Address</label> <input type="email" name="email" value={email} onChange={onChange} required /><br />
+                <div>
+                    <label htmlFor="email">Email Address</label> <input type="email" name="email" value={email} onChange={onChange} required />
+                </div>
             
-                <label htmlFor="password">Password</label> <input type="password" name="password" value={password} onChange={onChange} required minLength="6" /><br />
+                <div>
+                    <label htmlFor="password">Password</label> <input type="password" name="password" value={password} onChange={onChange} required minLength="6" />
+                </div>
             
-                <label htmlFor="password2">Confirm Password</label> <input type="password" name="password2" value={password2} onChange={onChange} required minLength="6" /><br /><br />
+                <div>
+                    <label htmlFor="password2">Confirm Password</label> <input type="password" name="password2" value={password2} onChange={onChange} required minLength="6" />
+                </div>
+                
                 <input type="submit" value="Sign up" className="btn btn-primary btn-block" />
             </form>
         </Fragment>
