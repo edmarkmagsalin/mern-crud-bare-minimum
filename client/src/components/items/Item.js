@@ -4,19 +4,22 @@ import ItemContext from '../../context/item/itemContext'
 
 
 export const Item = ({ item }) => {
-    const itemContext = useContext(ItemContext)
+    
+    const { deleteItem } = useContext(ItemContext)
 
-    const { deleteItem } = itemContext;
-
-    const { _id, name } = item;
+    const { _id, name } = item
 
     const onDelete = () => {
         deleteItem(_id);
     }
 
+    const onEdit = () => {
+        console.log('onEdit clicked')
+    }
+
     return (
         <Fragment>
-            {name} <button onClick={onDelete}>Delete</button>
+            {name} <button onClick={onEdit}>Edit</button> <button onClick={onDelete}>Delete</button>
         </Fragment>
     )
 }

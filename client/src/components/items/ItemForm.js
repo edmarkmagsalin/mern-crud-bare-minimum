@@ -4,21 +4,21 @@ import ItemContext from '../../context/item/itemContext'
 const ItemForm = () => {
     const itemContext = useContext(ItemContext);
 
-    const { createItem } = itemContext;
+    const { createItem, } = itemContext;
 
     const [item, setItem] = useState({
         name: ''
     });
 
     const onChange = e => {
-        setItem({...item, [e.target.name]: e.target.value});
+        setItem({...item, [e.target.name]: e.target.value})
     }
 
     const onSubmit = e => {
-        e.preventDefault();
+        e.preventDefault()
         createItem(item)
     }
-    
+
     return (
         <div>
             <form onSubmit={onSubmit}>

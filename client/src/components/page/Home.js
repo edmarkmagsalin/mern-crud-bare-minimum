@@ -1,12 +1,12 @@
-import React, { useContext, useEffect } from 'react'
+import React, { Fragment, useContext, useEffect } from 'react'
 import AuthContext from '../../context/auth/authContext'
 
 const Home = () => {
 
-    const authContext = useContext(AuthContext)
-
-    const { loadUser, isAuthenticated } = authContext
+    // provide functions and variables from AuthState
+    const { loadUser, isAuthenticated } = useContext(AuthContext)
     
+    // check if the token exist then load that token's user data
     useEffect(() => {
         if(localStorage.token){
             loadUser()
@@ -15,10 +15,10 @@ const Home = () => {
     }, [])
 
     return (
-        <div>
+        <Fragment>
             <h1>Home</h1>
             {isAuthenticated && 'Authenticated'}
-        </div>
+        </Fragment>
     )
 }
 

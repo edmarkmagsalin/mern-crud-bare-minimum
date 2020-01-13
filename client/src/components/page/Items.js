@@ -1,10 +1,13 @@
 import React, { Fragment, useContext, useEffect } from 'react'
+import ItemFilter from '../items/ItemFilter'
+import Items from '../items/Items'
+import ItemForm from '../items/ItemForm'
 import AuthContext from '../../context/auth/authContext'
 
-const Profile = () => {
+const Item = () => {
 
     // provide functions and variables from AuthState
-    const { loadUser, user } = useContext(AuthContext)
+    const { loadUser } = useContext(AuthContext)
 
     useEffect(() => {
         loadUser()
@@ -13,12 +16,12 @@ const Profile = () => {
 
     return (
         <Fragment>
-            <h1>Profile</h1>
-            First name: {user && user.firstname} <br />
-            Last name: {user && user.lastname} <br />
-            Email address: {user && user.email} <br />
+            <h1>Item/s</h1>
+            <ItemFilter />
+            <Items />
+            <ItemForm />
         </Fragment>
     )
 }
 
-export default Profile
+export default Item

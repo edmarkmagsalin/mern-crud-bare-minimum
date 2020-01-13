@@ -17,8 +17,9 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAIL = 'LOGIN_FAIL'
 
 // Utils
-export const CLEAR_ITEMS = 'CLEAR_ITEMS'
 export const CLEAR_ERRORS = 'CLEAR_ERRORS'
+export const SHOW_MODAL = 'SHOW_MODAL'
+export const HIDE_MODAL = 'HIDE_MODAL'
 export const ITEM_ERROR = 'ITEM_ERROR'
 export const LOGOUT = 'LOGOUT'
 

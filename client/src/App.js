@@ -10,12 +10,13 @@ import Home from './components/page/Home'
 import Profile from './components/page/Profile'
 import Signup from './components/auth/Signup'
 import Login from './components/auth/Login'
-import Items from './components/items/Items'
+import Items from './components/page/Items'
 
 // States
 import AuthState from './context/auth/AuthState'
 import ItemState from './context/item/ItemState'
-
+// Styles
+import './App.css'
 // Utilities
 import setAuthToken from './utils/setAuthToken'
 
