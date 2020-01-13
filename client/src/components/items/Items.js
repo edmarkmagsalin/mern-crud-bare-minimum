@@ -5,7 +5,7 @@ import ItemContext from '../../context/item/itemContext'
 const Items = () => {
     const itemContext = useContext(ItemContext)
 
-    const { items, readItems, loading } = itemContext
+    const { items, filtered, readItems, loading } = itemContext
 
     useEffect(() => {
         readItems();
@@ -19,15 +19,24 @@ const Items = () => {
     return (
         <Fragment>
             {
-            items !== null && !loading
-                ? items
-                    .map(item => (
-                        <div key={item._id}>
-                            <Item item={item} />
-                        </div>
+                items !== null && !loading
+                ?
+                filtered !== null && !loading
+                    ? filtered
+                        .map(item => (
+                            <div key={item._id}>
+                                <Item item={item} />
+                            </div>
+                        )
                     )
-                )
-                : 'loading...'
+                    : items
+                        .map(item => (
+                            <div key={item._id}>
+                                <Item item={item} />
+                            </div>
+                        )
+                    )
+                : 'Loading...'
             }
         </Fragment>
     )

@@ -1,25 +1,32 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import ItemContext from '../../context/item/itemContext'
 
 const ItemFilter = () => {
 
     const itemContext = useContext(ItemContext)
 
-    const { filterItem } = itemContext
+    const text = useRef(null)
 
-    const [item, setItem] = useState({
-        query: ''
+    const { setFilter, clearFilter, filtered } = itemContext
+
+    useEffect(() => {
+        if (filtered === null) {
+            text.current.value = ''
+        }
     })
 
     const onChange = e => {
-        setItem({ ...item, [e.target.name]: e.target.value })
-        filterItem();
+        if(text.current.value !== ''){
+            setFilter(e.target.value)
+        } else {
+            clearFilter()
+        }
     }
     return (
         <div>
             <form>
                 <div>
-                    <label htmlFor="search">Search: </label> <input type="text" name="search" id="search" onChange={onChange}/>
+                    <label htmlFor="search">Search: </label> <input type="text" ref={text} onChange={onChange}/>
                 </div>
             </form>
         </div>

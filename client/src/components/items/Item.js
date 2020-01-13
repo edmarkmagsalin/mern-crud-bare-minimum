@@ -4,9 +4,9 @@ import ItemContext from '../../context/item/itemContext'
 
 
 export const Item = ({ item }) => {
-    
-    const { deleteItem } = useContext(ItemContext)
 
+    const { deleteItem, setCurrent } = useContext(ItemContext)
+    
     const { _id, name } = item
 
     const onDelete = () => {
@@ -14,12 +14,12 @@ export const Item = ({ item }) => {
     }
 
     const onEdit = () => {
-        console.log('onEdit clicked')
+        setCurrent(item)
     }
 
     return (
         <Fragment>
-            {name} <button onClick={onEdit}>Edit</button> <button onClick={onDelete}>Delete</button>
+           {name} <button onClick={onEdit}>Edit</button> <button onClick={onDelete}>Delete</button>
         </Fragment>
     )
 }
@@ -28,4 +28,4 @@ Item.propTypes = {
     item: PropTypes.object.isRequired,
 }
 
-export default Item;
+export default Item

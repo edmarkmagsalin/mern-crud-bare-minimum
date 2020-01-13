@@ -4,8 +4,12 @@ export const READ_ITEMS = 'READ_ITEMS'
 export const UPDATE_ITEM = 'UPDATE_ITEM'
 export const DELETE_ITEM = 'DELETE_ITEM'
 
+// Set up form to edit chosen item
+export const SET_CURRENT = 'SET_CURRENT'
+export const CLEAR_CURRENT = 'CLEAR_CURRENT'
+
 // Filter
-export const FILTER_ITEMS = 'FILTER_ITEMS'
+export const SET_FILTER = 'SET_FILTER'
 export const CLEAR_FILTER = 'CLEAR_FILTER'
 
 // Auth
@@ -18,12 +22,5 @@ export const LOGIN_FAIL = 'LOGIN_FAIL'
 
 // Utils
 export const CLEAR_ERRORS = 'CLEAR_ERRORS'
-export const SHOW_MODAL = 'SHOW_MODAL'
-export const HIDE_MODAL = 'HIDE_MODAL'
 export const ITEM_ERROR = 'ITEM_ERROR'
 export const LOGOUT = 'LOGOUT'
-
-// TO DELETE
-
-export const CLEAR_CURRENT = 'CLEAR_CURRENT'
-export const SET_CURRENT = 'SET_CURRENT'
