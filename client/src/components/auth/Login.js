@@ -40,6 +40,16 @@ const Login = props => {
         }
     }
 
+    const fbLogin = e => {
+        e.preventDefault();
+        console.log("fbLogin");
+    }
+
+    const googleLogin = e => {
+        e.preventDefault();
+        console.log("googleLogin");
+    }
+
     return (
         <Fragment>
             <h1>Login</h1>
@@ -51,7 +61,15 @@ const Login = props => {
                 <div>
                     <label htmlFor="password">Password</label> <input type="password" name="password" value={password} onChange={onChange} required minLength="6" />
                 </div>
-                <input type="submit" value="Log in" />
+                <div>
+                    <input type="submit" value="Log in" />
+                </div>
+                <div>
+                    <button disabled onClick={fbLogin}>Log in with Facebook</button>
+                </div>
+                <div>
+                    <button disabled onClick={googleLogin}>Log in with Google</button>
+                </div>
             </form>
         </Fragment>
     )
