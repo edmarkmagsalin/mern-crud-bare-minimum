@@ -1,4 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://edmarkmagsalin:edmark123@mern-6v2xg.mongodb.net/mern-crud-bare-minimum?retryWrites=true&w=majority",
-    "jwtSecret": "merncrudapp"
-}

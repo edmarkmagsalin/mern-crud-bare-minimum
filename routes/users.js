@@ -1,8 +1,8 @@
+require('dotenv').config()
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const config = require('config');
 const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
@@ -21,6 +21,7 @@ router
 ],
 async (req, res)=>{
     const errors = validationResult(req);
+    console.log(errors)
     if(!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() })
     }
@@ -56,7 +57,7 @@ async (req, res)=>{
         }
 
         jwt
-        .sign(payload, config.get('jwtSecret'),
+        .sign(payload, process.env.JWT_SECRET,
         { expiresIn: 360000 },
         (error, token) => {
             if(error) throw error;
