@@ -9,7 +9,14 @@ npm i -D nodemon concurrently
 ## Server - Backend
 ```diff
 + Modules installation
+//old
 npm i express bcryptjs jsonwebtoken config express-validator mongoose
+
+// base
+npm i express dotenv mongoose
+
+//auth
+npm i mongoose-findorcreate express-validator express-session passport passport-local passport-local-mongoose passport-facebook passport-google-oauth20
 
 + package.json setup
 "scripts": {
