@@ -1,5 +1,8 @@
 require('dotenv').config()
 const express = require('express')
+const bodyParser = require('body-parser')
+const session = require('express-session')
+const passport = require('passport')
 const path = require('path')
 const connectDB = require('./config/db')
 
@@ -7,6 +10,8 @@ const app = express()
 
 // Initialize Middleware
 app.use(express.json({ extended: false }))
+
+app.use(bodyParser.urlencoded({extended: true}))
 
 // Initialize session
 app.use(session({

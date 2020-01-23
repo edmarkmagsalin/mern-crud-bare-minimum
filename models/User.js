@@ -1,4 +1,4 @@
-const  mongoose = require('mongoose')
+const mongoose = require('mongoose')
 const passportLocalMongoose = require('passport-local-mongoose')
 const findOrCreate = require('mongoose-findorcreate')
 
@@ -11,22 +11,19 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    email: {
+    username: {
         type: String,
         required: true,
         unique: true
     },
     password: {
-        type: String,
-        required: true
+        type: String
     },
     googleId: {
-        type: String,
-        unique: true
+        type: String
     },
     facebookId: {
-        type: String,
-        unique: true
+        type: String
     },
     date: {
         type: Date,
@@ -36,8 +33,8 @@ const UserSchema = new mongoose.Schema({
 
 // Plugins
 // use passport-local-mongoose
-userSchema.plugin(passportLocalMongoose)
+UserSchema.plugin(passportLocalMongoose)
 // implement findOrCreate
-userSchema.plugin(findOrCreate)
+UserSchema.plugin(findOrCreate)
 
-module.exports = mongoose.model('user', UserSchema)
+module.exports = new mongoose.model('user', UserSchema)

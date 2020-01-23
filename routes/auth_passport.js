@@ -1,8 +1,8 @@
 require('dotenv').config()
-const express = require('express');
+const express = require('express')
+const passport = require('passport')
 const router = express.Router()
-const auth = require('../middleware/auth');
-const { check, validationResult } = require('express-validator');
+const { check, validationResult } = require('express-validator')
 
 const User = require('../models/User');
 
@@ -30,34 +30,22 @@ router.post('/register',
     check('password', 'Please enter a password with 6 or more characters').isLength({ min: 6 })
 ],
 async (req, res)=>{
-    User.register({firstname: req.body.firstname, lastname: req.body.lastname, email: req.body.email, }, req.body.password, (err,user) => {
+
+    const errors = validationResult(req);
+    //console.log(errors)
+    if(!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() })
+    }
+    
+    const { firstname, lastname, email, password } = req.body;
+    
+    User.register(new User({firstname, lastname, username: email}), password, (err,user) => {
         if(err) {
             console.log(err)
         } else {
+            console.log('registration success')
             passport.authenticate('local')
-        }
-    })
-})
-
-// @route  POST
-// @desc   Login user
-// @access Public
-router.post('/login',
-[
-    check('email', 'Please include a valid email').isEmail(),
-    check('password', 'Please enter a password with 6 or more characters').isLength({ min: 6 })
-],
-async (req, res)=>{
-    const user = new User({
-        email: req.body.email,
-        password: req.body.password
-    })
-    req.login(user, (err) => {
-        if (err) {
-            console.log(err)
-        } else {
-            passport.authenticate('local',
-            { failureRedirect: '/login' })
+            //res.json({ user })
         }
     })
 })
