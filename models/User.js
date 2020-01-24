@@ -32,9 +32,7 @@ const UserSchema = new mongoose.Schema({
 })
 
 // Plugins
-// use passport-local-mongoose
 UserSchema.plugin(passportLocalMongoose)
-// implement findOrCreate
 UserSchema.plugin(findOrCreate)
 
-module.exports = new mongoose.model('user', UserSchema)
+module.exports = mongoose.model('user', UserSchema)

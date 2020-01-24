@@ -9,7 +9,7 @@ const Home = () => {
     // check if the token exist then load that token's user data
     useEffect(() => {
         if(localStorage.token){
-            loadUser()
+            //loadUser()
         }
         // eslint-disable-next-line
     }, [])

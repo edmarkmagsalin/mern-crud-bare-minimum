@@ -2,6 +2,8 @@ require('dotenv').config()
 const express = require('express')
 const passport = require('passport')
 const router = express.Router()
+const jwt = require('jsonwebtoken')
+const auth = require('../middleware/auth')
 const { check, validationResult } = require('express-validator')
 
 const User = require('../models/User');
@@ -29,25 +31,44 @@ router.post('/register',
     check('email', 'Please include a valid email').isEmail(),
     check('password', 'Please enter a password with 6 or more characters').isLength({ min: 6 })
 ],
-async (req, res)=>{
+async (req, res) => {
 
     const errors = validationResult(req);
     //console.log(errors)
     if(!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() })
     }
-    
-    const { firstname, lastname, email, password } = req.body;
-    
-    User.register(new User({firstname, lastname, username: email}), password, (err,user) => {
-        if(err) {
-            console.log(err)
-        } else {
-            console.log('registration success')
-            passport.authenticate('local')
-            //res.json({ user })
-        }
-    })
+    const { firstname, lastname, email, password } = req.body
+
+    try {
+        User.register(new User({firstname, lastname, username: email}), password, (err,user) => {
+            if(err) {
+                console.log(err)
+            } else {
+                passport.authenticate('local')
+                
+                // BEGIN get the jsonWebToken using user id after registering
+                const payload = {
+                    user: {
+                        id: user.id
+                    }
+                }
+
+                jwt.sign(payload,
+                process.env.JWT_SECRET,
+                { expiresIn: 360000 },
+                (error, token) => {
+                    if(error) throw error;
+                    res.json({ token });
+                });
+                // END
+            }
+        })
+        
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send('Server error')
+    }
 })
 
 module.exports = router;
